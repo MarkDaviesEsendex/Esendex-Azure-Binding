@@ -6,7 +6,6 @@ Input binding for esendex sms sending
 ## How to use
 Some code examples:
 
-
 ### Sending an sms 
 ```
 public static class Function1
@@ -38,3 +37,22 @@ public static IActionResult Run(
     return new OkObjectResult(messages);
 }
 ```
+
+## Output binding 
+
+You can specify a output binding like so:
+```
+[FunctionName("Function1")]
+[return: EsendexSms(AccountIdSetting = "AzureWebJobsEsendexAccountId", UsernameSetting = "AzureWebJobsEsendexUsername", PasswordSetting = "AzureWebJobsEsendexPassword")]
+public static EsendexSms Run2(
+    [HttpTrigger(AuthorizationLevel.Function, "post", Route = "message/send2")] HttpRequestMessage req,
+    ILogger log)
+{
+    return new EsendexSms { Body = "hello", To = "+441234567890" };
+}
+```
+
+In the `EsendexSms` attribute you can specify the settings to read the accountid, username and password, these default to the following:
+* AzureWebJobsEsendexAccountId
+* AzureWebJobsEsendexUsername
+* AzureWebJobsEsendexPassword

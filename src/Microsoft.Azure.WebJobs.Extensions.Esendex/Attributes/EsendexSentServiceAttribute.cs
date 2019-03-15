@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Azure.WebJobs.Description;
 
-namespace Microsoft.Azure.WebJobs.Extensions.Esendex
+namespace Microsoft.Azure.WebJobs.Extensions.Esendex.Attributes
 {
     [Binding, AttributeUsage(AttributeTargets.Parameter)]
     public class EsendexSentServiceAttribute : Attribute

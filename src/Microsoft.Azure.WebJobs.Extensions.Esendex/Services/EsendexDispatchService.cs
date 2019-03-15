@@ -1,8 +1,7 @@
-﻿
-using com.esendex.sdk;
+﻿using com.esendex.sdk;
 using com.esendex.sdk.messaging;
 
-namespace Microsoft.Azure.WebJobs.Extensions.Esendex
+namespace Microsoft.Azure.WebJobs.Extensions.Esendex.Services
 {
     public interface IMessageDispatchService
     {

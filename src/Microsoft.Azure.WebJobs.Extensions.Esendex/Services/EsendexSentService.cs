@@ -1,8 +1,6 @@
-﻿using System;
-using com.esendex.sdk;
-using com.esendex.sdk.sent;
+﻿using com.esendex.sdk.sent;
 
-namespace Microsoft.Azure.WebJobs.Extensions.Esendex
+namespace Microsoft.Azure.WebJobs.Extensions.Esendex.Services
 {
     public interface IMessageSentService
     {

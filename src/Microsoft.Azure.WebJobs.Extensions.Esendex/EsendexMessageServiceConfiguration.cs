@@ -1,4 +1,6 @@
 ﻿using com.esendex.sdk.sent;
+using Microsoft.Azure.WebJobs.Extensions.Esendex.Attributes;
+using Microsoft.Azure.WebJobs.Extensions.Esendex.Services;
 using Microsoft.Azure.WebJobs.Host.Config;
 
 namespace Microsoft.Azure.WebJobs.Extensions.Esendex
@@ -14,6 +16,8 @@ namespace Microsoft.Azure.WebJobs.Extensions.Esendex
             context.AddBindingRule<EsendexSentServiceAttribute>()
                 .BindToInput<IMessageSentService>(attr =>
                     new EsendexSentService(attr.Username, attr.Password, attr.AccountId));
+
+            
         }
     }
 }
