@@ -12,10 +12,13 @@ namespace EsendexSmsBinding
         [FunctionName("Function1")]
         public static IActionResult Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
-            [EsendexMessaging(AccountId = "", Username = "", Password = "")] IMessageService messageService,
+            [EsendexMessaging(AccountId = "", Username = "", Password = "")] IMessageDispatchService messageDispatchService,
+            [EsendexSentService(AccountId = "", Username = "", Password = "")] IMessageSentService sentService,
             ILogger log)
         {
-            return new OkObjectResult(messageService.SendMessage("", "azure hello"));
+            var messagingResult = messageDispatchService.SendMessage("", "azure hello");
+            var messages = sentService.GetMessages(0, 10);
+            return new OkObjectResult(messagingResult);
         }
     }
 }

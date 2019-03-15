@@ -4,17 +4,17 @@ using com.esendex.sdk.messaging;
 
 namespace Microsoft.Azure.WebJobs.Extensions.Esendex
 {
-    public interface IMessageService
+    public interface IMessageDispatchService
     {
         MessagingResult SendMessage(string recipients, string body);
     }
 
-    public class EsendexMessageService : IMessageService
+    public class EsendexDispatchService : IMessageDispatchService
     {
         private readonly MessagingService _messagingService;
         private readonly string _accountReference;
 
-        public EsendexMessageService(string username, string password, string accountReference)
+        public EsendexDispatchService(string username, string password, string accountReference)
         {
             _accountReference = accountReference;
             _messagingService = new MessagingService(true, new EsendexCredentials(username, password));
@@ -25,4 +25,5 @@ namespace Microsoft.Azure.WebJobs.Extensions.Esendex
             return _messagingService.SendMessage(new SmsMessage(recipients, body, _accountReference));
         }
     }
+
 }

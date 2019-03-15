@@ -13,7 +13,8 @@ public static class Function1
         [EsendexMessaging(AccountId = "EsendexAccountReference", Username = "EsendexUserName", Password = "EsendexPassword")] IMessageService messageService,
         ILogger log)
     {
-        return new OkObjectResult(messageService.SendMessage("", "azure hello"));
+        var messageResult = messageService.SendMessage("+441234567890", "azure hello");
+        return new OkObjectResult(messageResult);
     }
 }
 ```
