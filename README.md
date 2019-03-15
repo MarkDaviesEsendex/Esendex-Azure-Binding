@@ -4,6 +4,10 @@ Input binding for esendex sms sending
 *Note* - This is not supported by Esendex and should not be thought of as an official Esendex project or solution
 
 ## How to use
+Some code examples:
+
+
+### Sending an sms 
 ```
 public static class Function1
 {
@@ -19,5 +23,6 @@ public static class Function1
 }
 ```
 
+*Note*: Currently only supports sms messaging - even though it would be trivial to implement voice messaging
 
-Currently only supports sms messaging - even though it would be trivial to implement voice messaging
+## Retrieving sms information
