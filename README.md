@@ -26,3 +26,15 @@ public static class Function1
 *Note*: Currently only supports sms messaging - even though it would be trivial to implement voice messaging
 
 ## Retrieving sms information
+
+```
+[FunctionName("Function1")]
+public static IActionResult Run(
+    [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
+    [EsendexSentService(AccountId = "EsendexAccountReference", Username = "EsendexUserName", Password = "EsendexPassword")] IMessageSentService sentService,
+    ILogger log)
+{
+    var messages = sentService.GetMessages(0, 10);
+    return new OkObjectResult(messages);
+}
+```
